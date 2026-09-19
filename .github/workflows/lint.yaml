@@ -1,0 +1,22 @@
+name: lint
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: go run mvdan.cc/sh/v3/cmd/shfmt@latest -i 2 -s -d .
+  lint:
+    needs:
+      - format
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - run: for result in ${{ join(needs.*.result, ' ') }}; do [ $result = success ]; done
