@@ -30,7 +30,7 @@ zep-git-status-cancel() {
   if [ -n "$zep_git_status_fd" ]; then
     zle -F $zep_git_status_fd
     exec {zep_git_status_fd}<&-
-    zep_git_status_fd=
+    unset zep_git_status_fd
   fi
 }
 
