@@ -5,7 +5,7 @@ The minimal Zsh prompt for Git.
 It looks like the following:
 
 ```
-<span style="color: red">~/src/github.com/raviqqe/zep</span> main [127]
+~/src/github.com/raviqqe/zep main [127]
 > echo hello
 ```
 
