@@ -23,7 +23,7 @@ zep-git-status() {
     fi
   fi
 
-  echo "$markers"
+  echo $markers
 }
 
 zep-git-status-cancel() {
