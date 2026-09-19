@@ -1,2 +1,7 @@
 # zep
-Minimal Zsh prompt for Git
+
+The minimal Zsh prompt for Git.
+
+## License
+
+[The Unlicense](UNLICENSE)
