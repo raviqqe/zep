@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="380" height="68" viewBox="0 0 380 68">
   <rect width="380" height="68" rx="6" fill="#1e1e1e" />
-  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="14" fill="#d4d4d4">
+  <g font-family="ui-monospace, monospace" font-size="14" fill="#d4d4d4">
     <text x="16" y="29">
       <tspan fill="#5c9eff">~/src/github.com/raviqqe/zep</tspan>
       <tspan fill="#a8a8a8">main</tspan>
