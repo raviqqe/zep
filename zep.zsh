@@ -1,4 +1,4 @@
-zstyle :vcs_info:git:* formats '%F{242}%b%f %F{cyan}%m%f'
+zstyle :vcs_info:git:* formats '%F{248}%b%f %F{cyan}%m%f'
 zstyle :vcs_info:git*+set-message:* hooks git-remote
 
 +vi-git-remote() {
