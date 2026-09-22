@@ -1,7 +1,9 @@
-autoload -Uz add-zsh-hook
+setopt prompt_subst
 
-zstyle :vcs_info:git:* formats '%F{248}%b%f '
-zstyle :vcs_info:git*+post-backend:* hooks git-status
+autoload -Uz add-zsh-hook vcs_info
+
+zstyle ':vcs_info:git:*' formats '%F{248}%b%f '
+zstyle ':vcs_info:git*+post-backend:*' hooks git-status
 
 zep-git-status() {
   local behind ahead markers
@@ -58,6 +60,7 @@ zep-git-status-reset() {
 }
 
 add-zsh-hook chpwd zep-git-status-reset
+add-zsh-hook precmd vcs_info
 
 function zle-keymap-select zle-line-init {
   if [ $KEYMAP = vicmd ]; then
