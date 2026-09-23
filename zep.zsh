@@ -1,9 +1,21 @@
+zmodload zsh/system
+
 setopt prompt_subst
 
 autoload -Uz add-zsh-hook vcs_info
 
 zstyle ':vcs_info:git:*' formats '%F{248}%b%f '
 zstyle ':vcs_info:git*+post-backend:*' hooks git-status
+
+zep-git-fetch() {
+  local lock=$(git rev-parse --git-common-dir)/zep-fetch.lock
+
+  : >>"$lock"
+
+  if zsystem flock -t 0 -e "$lock"; then
+    git fetch --no-write-fetch-head
+  fi
+}
 
 zep-git-status() {
   local behind ahead markers
@@ -14,7 +26,7 @@ zep-git-status() {
 
   if git rev-list --left-right --count @{upstream}...HEAD 2>/dev/null |
     read behind ahead; then
-    git fetch --no-write-fetch-head >/dev/null 2>&1 &|
+    zep-git-fetch >/dev/null 2>&1 &|
 
     if [ $ahead -gt 0 ]; then
       markers+=^
