@@ -24,7 +24,7 @@ zep-git-status() {
     printf '*'
   fi
 
-  if git rev-list --left-right --count @{upstream}...HEAD | read behind ahead; then
+  if git rev-list --left-right --count @{upstream}...HEAD 2>/dev/null | read behind ahead; then
     zep-git-fetch >/dev/null 2>&1 &|
 
     if [ $ahead -gt 0 ]; then
