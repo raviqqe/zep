@@ -18,26 +18,23 @@ zep-git-fetch() {
 }
 
 zep-git-status() {
-  local behind ahead markers
+  local behind ahead
 
   if ! git diff --quiet || ! git diff --quiet --staged; then
-    markers+=*
+    printf '*'
   fi
 
-  if git rev-list --left-right --count @{upstream}...HEAD 2>/dev/null |
-    read behind ahead; then
+  if git rev-list --left-right --count @{upstream}...HEAD | read behind ahead; then
     zep-git-fetch >/dev/null 2>&1 &|
 
     if [ $ahead -gt 0 ]; then
-      markers+=^
+      printf ^
     fi
 
     if [ $behind -gt 0 ]; then
-      markers+=v
+      printf v
     fi
   fi
-
-  echo "$markers"
 }
 
 zep-git-status-cancel() {
