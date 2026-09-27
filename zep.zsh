@@ -28,7 +28,7 @@ zep-git-status() {
     zep-git-fetch >/dev/null 2>&1 &|
 
     if [ $ahead -gt 0 ]; then
-      printf ^
+      printf '^'
     fi
 
     if [ $behind -gt 0 ]; then
